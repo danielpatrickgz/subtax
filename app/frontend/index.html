@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Dynamic Subtitle Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+  <main class="max-w-4xl mx-auto px-4 py-10 space-y-8">
+    <header class="space-y-2">
+      <p class="text-cyan-300 font-semibold">Subtax</p>
+      <h1 class="text-4xl font-bold">AI Dynamic Subtitle Generator</h1>
+      <p class="text-slate-400">Upload a video and generate animated subtitles optimized for social platforms.</p>
+    </header>
+
+    <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+      <h2 class="text-xl font-semibold">1. Upload Video</h2>
+      <input id="videoInput" type="file" accept=".mp4,.mov,.mkv" class="block w-full text-sm" />
+      <button id="uploadBtn" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-5 py-2 rounded-lg">Upload</button>
+      <p id="uploadStatus" class="text-sm text-slate-300"></p>
+      <div class="h-2 bg-slate-800 rounded overflow-hidden"><div id="uploadProgressFill" class="h-full w-0 bg-cyan-400"></div></div>
+    </section>
+
+    <section id="pipelineSection" class="hidden bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+      <h2 class="text-xl font-semibold">2. Processing Pipeline</h2>
+      <div id="progressBar" class="h-2 bg-slate-800 rounded overflow-hidden"><div id="progressFill" class="h-full w-0 bg-cyan-400"></div></div>
+      <ul id="stepList" class="space-y-2 text-sm"></ul>
+      <button id="runPipelineBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold px-5 py-2 rounded-lg">Run AI Pipeline</button>
+      <pre id="previewBox" class="bg-slate-950 rounded-lg p-3 text-xs whitespace-pre-wrap max-h-64 overflow-auto"></pre>
+    </section>
+
+    <section id="styleSection" class="hidden bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+      <h2 class="text-xl font-semibold">3. Subtitle Style</h2>
+      <div class="grid md:grid-cols-3 gap-3" id="presetContainer"></div>
+      <label class="block text-sm">Position
+        <select id="positionSelect" class="mt-1 w-full bg-slate-800 border border-slate-700 rounded p-2">
+          <option value="center">Center</option>
+          <option value="bottom">Bottom</option>
+        </select>
+      </label>
+      <label class="block text-sm">Word Highlight Color
+        <input id="highlightColor" type="color" value="#FFD60A" class="mt-1 h-10 w-full bg-transparent" />
+      </label>
+      <button id="renderBtn" class="bg-fuchsia-500 hover:bg-fuchsia-400 text-slate-950 font-semibold px-5 py-2 rounded-lg">Render Final Video</button>
+      <a id="downloadLink" class="hidden inline-block text-cyan-300 underline" target="_blank">Download subtitled video</a>
+    </section>
+  </main>
+
+  <script src="/main.js"></script>
+</body>
+</html>
